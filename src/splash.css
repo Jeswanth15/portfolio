@@ -1,0 +1,227 @@
+/* MAIN CONTAINER ----------------------------------------------------- */
+.splash-container {
+  height: 100vh;
+  width: 100%;
+  background: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ====================================================================
+   VERTICAL LINES
+==================================================================== */
+.vertical-lines span {
+  position: absolute;
+  top: -120%;
+  width: 2px;
+  height: 140%;
+  background: rgba(56,189,248,0.16);
+  animation: vMove 4s linear infinite;
+}
+
+.vertical-lines span:nth-child(1) { left: 12%; animation-delay: 0s; }
+.vertical-lines span:nth-child(2) { left: 30%; animation-delay: 0.4s; }
+.vertical-lines span:nth-child(3) { left: 50%; animation-delay: 0.8s; }
+.vertical-lines span:nth-child(4) { left: 70%; animation-delay: 1.2s; }
+.vertical-lines span:nth-child(5) { left: 88%; animation-delay: 1.6s; }
+
+@keyframes vMove {
+  0% { transform: translateY(-140%); }
+  100% { transform: translateY(140%); }
+}
+
+/* ====================================================================
+   HORIZONTAL LINES
+==================================================================== */
+.horizontal-lines span {
+  position: absolute;
+  left: -140%;
+  height: 2px;
+  width: 140%;
+  background: rgba(56,189,248,0.14);
+  animation: hMove 5s linear infinite;
+}
+
+.horizontal-lines span:nth-child(1) { top: 20%; animation-delay: 0s; }
+.horizontal-lines span:nth-child(2) { top: 38%; animation-delay: 0.5s; }
+.horizontal-lines span:nth-child(3) { top: 56%; animation-delay: 1s; }
+.horizontal-lines span:nth-child(4) { top: 74%; animation-delay: 1.5s; }
+.horizontal-lines span:nth-child(5) { top: 90%; animation-delay: 2s; }
+
+@keyframes hMove {
+  0% { transform: translateX(-140%); }
+  100% { transform: translateX(140%); }
+}
+
+/* ====================================================================
+   FLOATING PROGRAMMING ICONS
+==================================================================== */
+.floating-icons span {
+  position: absolute;
+  font-size: 1.8rem;
+  color: #38bdf8;
+  opacity: 0.15;
+  animation: float 6s infinite ease-in-out;
+}
+
+.floating-icons span:nth-child(1) { top: 15%; left: 10%; }
+.floating-icons span:nth-child(2) { top: 35%; left: 85%; animation-delay: 0.6s; }
+.floating-icons span:nth-child(3) { top: 55%; left: 15%; animation-delay: 1.2s; }
+.floating-icons span:nth-child(4) { top: 72%; left: 65%; animation-delay: 1.8s; }
+.floating-icons span:nth-child(5) { top: 25%; left: 65%; animation-delay: 2.4s; }
+.floating-icons span:nth-child(6) { top: 70%; left: 25%; animation-delay: 3s; }
+.floating-icons span:nth-child(7) { top: 8%; left: 75%; animation-delay: 3.5s; }
+
+@keyframes float {
+  0% { transform: translateY(0px); opacity: 0.2; }
+  50% { transform: translateY(-22px); opacity: 0.45; }
+  100% { transform: translateY(0px); opacity: 0.2; }
+}
+
+/* ====================================================================
+   FULL SCREEN FLOATING CODE (NO BOX)
+==================================================================== */
+.floating-code {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.code-float {
+  position: absolute;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #38bdf8;
+  opacity: 0.85;
+  white-space: nowrap;
+  animation: bounceXY 6s infinite alternate ease-in-out;
+}
+
+.code-float:nth-child(1) { top: 10%; left: 5%; animation-duration: 7s; }
+.code-float:nth-child(2) { top: 45%; left: 20%; animation-duration: 6.2s; }
+.code-float:nth-child(3) { top: 28%; left: 75%; animation-duration: 8s; }
+.code-float:nth-child(4) { top: 80%; left: 40%; animation-duration: 7.4s; }
+.code-float:nth-child(5) { top: 65%; left: 10%; animation-duration: 6.8s; }
+.code-float:nth-child(6) { top: 18%; left: 85%; animation-duration: 7.9s; }
+
+@keyframes bounceXY {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(260px,-160px); }
+  50% { transform: translate(-200px,180px); }
+  75% { transform: translate(280px,120px); }
+  100% { transform: translate(-240px,-150px); }
+}
+
+/* ====================================================================
+   TREE (Nodes + Connecting Lines + Animation)
+==================================================================== */
+
+.tree-container {
+  position: absolute;
+  width: 100%;
+  height: 55%;
+  bottom: 12%;
+}
+
+/* Tree nodes */
+.tree-node {
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  background: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #38bdf8aa;
+  opacity: 0;
+  animation: popNode 0.6s forwards ease;
+}
+
+.tree-node:nth-child(1) { top: 0%;  left: 50%; transform: translateX(-50%); animation-delay: 0.2s; }
+.tree-node:nth-child(2) { top: 20%; left: 30%; animation-delay: 0.4s; }
+.tree-node:nth-child(3) { top: 20%; left: 70%; animation-delay: 0.6s; }
+.tree-node:nth-child(4) { top: 40%; left: 20%; animation-delay: 0.8s; }
+.tree-node:nth-child(5) { top: 40%; left: 40%; animation-delay: 1s; }
+.tree-node:nth-child(6) { top: 40%; left: 60%; animation-delay: 1.2s; }
+.tree-node:nth-child(7) { top: 40%; left: 80%; animation-delay: 1.4s; }
+
+/* connecting lines */
+.tree-edge {
+  position: absolute;
+  width: 2px;
+  background: #38bdf8;
+  opacity: 0;
+  animation: growEdge 0.6s forwards ease;
+}
+
+/* root → children lines */
+.edge-1 { top: 2%; left: 50%; height: 65px; animation-delay: 0.3s; }
+.edge-2 { top: 2%; left: 50%; height: 65px; transform: translateX(-120px); animation-delay: 0.3s; }
+.edge-3 { top: 2%; left: 50%; height: 65px; transform: translateX(120px); animation-delay: 0.3s; }
+
+/* 2nd level */
+.edge-4 { top: 22%; left: 30%; height: 60px; animation-delay: 0.7s; }
+.edge-5 { top: 22%; left: 30%; height: 60px; transform: translateX(80px); animation-delay: 0.7s; }
+
+.edge-6 { top: 22%; left: 70%; height: 60px; transform: translateX(-80px); animation-delay: 0.9s; }
+.edge-7 { top: 22%; left: 70%; height: 60px; animation-delay: 0.9s; }
+
+@keyframes growEdge {
+  0% { height: 0; opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes popNode {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ====================================================================
+   STATISTICAL GRAPH BARS (BOTTOM)
+==================================================================== */
+.stats-graph {
+  position: absolute;
+  bottom: 4%;
+  display: flex;
+  gap: 12px;
+  height: 80px;
+  align-items: flex-end;
+}
+
+.stat-bar {
+  width: 10px;
+  background: #38bdf8;
+  border-radius: 4px;
+  box-shadow: 0 0 18px #38bdf8aa;
+  animation: barsRise 2s ease-in-out infinite alternate;
+}
+
+.stat-bar:nth-child(1) { height: 20px; animation-delay: 0.2s; }
+.stat-bar:nth-child(2) { height: 45px; animation-delay: 0.4s; }
+.stat-bar:nth-child(3) { height: 30px; animation-delay: 0.6s; }
+.stat-bar:nth-child(4) { height: 55px; animation-delay: 0.8s; }
+.stat-bar:nth-child(5) { height: 38px; animation-delay: 1s; }
+
+@keyframes barsRise {
+  0% { transform: scaleY(0.4); opacity: 0.5; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+/* ====================================================================
+   TITLE + SUBTITLE
+==================================================================== */
+.splash-title {
+  color: #e5e7eb;
+  font-size: 2.4rem;
+  margin-top: 1rem;
+  text-shadow: 0 0 15px #38bdf855;
+}
+
+.splash-sub {
+  color: #94a3b8;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
