@@ -34,18 +34,16 @@ body::before {
 }
 
 /* --------------------------------------------------------------
-   NAVBAR — GLASSY + ELEVATED
+   NAVBAR — GLASSY + PREMIUM
 ---------------------------------------------------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.1rem 0;
-
   position: sticky;
   top: 0;
   z-index: 60;
-
   background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(20px) saturate(150%);
   border-bottom: 1px solid rgba(56,189,248,0.18);
@@ -61,7 +59,6 @@ body::before {
   text-shadow: 0 0 12px rgba(56,189,248,0.4);
 }
 
-/* Navbar items */
 .nav-links {
   display: flex;
   gap: 1.8rem;
@@ -81,11 +78,11 @@ body::before {
 }
 
 /* --------------------------------------------------------------
-   HERO SECTION — SMOOTH + BALANCED
+   HERO SECTION
 ---------------------------------------------------------------- */
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
   gap: 3.8rem;
   padding: 5.2rem 0 4.2rem;
 }
@@ -157,7 +154,7 @@ body::before {
   background: rgba(56,189,248,0.12);
 }
 
-/* Right side floating card */
+/* Right side card */
 .hero-side {
   display: flex;
   justify-content: center;
@@ -169,9 +166,8 @@ body::before {
   border-radius: 1.3rem;
   background: rgba(15,23,42,0.55);
   border: 1px solid rgba(148,163,184,0.15);
-  backdrop-filter: blur(18px);
-
   box-shadow: 0 24px 70px rgba(0,0,0,0.7);
+  backdrop-filter: blur(18px);
   transition: 0.35s ease;
 }
 
@@ -181,7 +177,7 @@ body::before {
 }
 
 /* --------------------------------------------------------------
-   SOCIAL LINKS — CRISP + PREMIUM
+   SOCIAL LINKS
 ---------------------------------------------------------------- */
 .social-row {
   margin-top: 2rem;
@@ -208,7 +204,7 @@ body::before {
 }
 
 /* --------------------------------------------------------------
-   SECTION SPACING — PERFECT LAYOUT
+   SECTIONS
 ---------------------------------------------------------------- */
 .section {
   padding: 4rem 0 3.4rem;
@@ -292,7 +288,7 @@ body::before {
 }
 
 /* --------------------------------------------------------------
-   CONTACT — PREMIUM ALIGNMENT + GLOW
+   CONTACT
 ---------------------------------------------------------------- */
 
 .contact-card {
@@ -308,11 +304,11 @@ body::before {
   box-shadow: 0 0 28px rgba(56, 189, 248, 0.55);
 }
 
-/* Contact Form Proper Alignment */
+/* FORM */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;            /* Perfect spacing */
+  gap: 1.1rem;
   width: 100%;
   margin-top: 0.6rem;
 }
@@ -320,7 +316,7 @@ body::before {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 1rem 1.15rem;   /* Equal padding for perfect alignment */
+  padding: 1rem 1.15rem;
   border-radius: 0.95rem;
   background: rgba(15, 23, 42, 0.75);
   border: 1px solid rgba(148, 163, 184, 0.25);
@@ -331,38 +327,35 @@ body::before {
 }
 
 .contact-form textarea {
-  min-height: 150px;      /* FIX: no small box */
-  resize: none;           /* Makes layout clean */
+  min-height: 150px;
+  resize: none;
   line-height: 1.5;
 }
 
-/* Focus animations */
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: #38bdf8;
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 18px rgba(56,189,248,0.45);
 }
 
-/* Send button spacing */
+/* BUTTON FIX SPACING */
 .contact-form button {
   margin-top: 0.4rem;
 }
 
 /* --------------------------------------------------------------
-   FOOTER — CLEAN + PREMIUM
+   FOOTER
 ---------------------------------------------------------------- */
-
 .footer {
   margin-top: 2.8rem;
   padding-top: 1.8rem;
   text-align: center;
-  border-top: 1px solid rgba(56, 189, 248, 0.15);
+  border-top: 1px solid rgba(56,189,248,0.15);
   color: #7f8a9c;
   font-size: 0.9rem;
-  letter-spacing: 0.02em;
 }
 
-/* Icon-only contact grid */
+/* ICON GRID */
 .icon-only-grid {
   display: grid;
   grid-template-columns: repeat(4, 60px);
