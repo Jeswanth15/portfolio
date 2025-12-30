@@ -1,0 +1,57 @@
+.ttt-wrapper {
+  max-width: 320px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.ttt-title {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.ttt-select {
+  margin-bottom: 8px;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.ttt-status {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ttt-cell {
+  aspect-ratio: 1;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px solid #0f172a;
+  background: white;
+  cursor: pointer;
+}
+
+.ttt-cell:hover {
+  background: #e5e7eb;
+}
+
+.ttt-reset {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .ttt-wrapper {
+    max-width: 90vw;
+  }
+}
