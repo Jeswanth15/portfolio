@@ -1,102 +1,116 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./splash.css";
 
-export default function SplashScreen({ onFinish }) {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onFinish();
-    }, 4500);
+const STEPS = [
+  "Initialising runtime...",
+  "Loading modules [React, Framer]...",
+  "Compiling components...",
+  "Almost ready...",
+];
 
-    return () => clearTimeout(timer);
+export default function SplashScreen({ onFinish }) {
+  const [step, setStep] = useState(0);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timers = [];
+
+    STEPS.forEach((_, i) => {
+      timers.push(setTimeout(() => setStep(i), i * 900));
+    });
+
+    // Animate progress bar smoothly
+    let p = 0;
+    const interval = setInterval(() => {
+      p += 1.2;
+      if (p >= 100) { p = 100; clearInterval(interval); }
+      setProgress(p);
+    }, 36);
+
+    const done = setTimeout(onFinish, 4200);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(interval);
+      clearTimeout(done);
+    };
   }, [onFinish]);
 
   return (
     <motion.div
-      className="splash-container"
+      className="splash-root"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0, scale: 1.05, filter: "blur(20px)" }}
+      transition={{ exit: { duration: 0.6, ease: "easeInOut" } }}
     >
+      {/* Animated Aurora */}
+      <div className="splash-aurora" />
 
-      {/* Vertical Lines */}
-      <div className="vertical-lines">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
+      {/* Dot grid */}
+      <div className="splash-grid" />
 
-      {/* Horizontal Lines */}
-      <div className="horizontal-lines">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-
-      {/* Floating Icons */}
-      <div className="floating-icons">
-        <span>⚛️</span>
-        <span>🐍</span>
-        <span>♨️</span>
-        <span>🗄️</span>
-        <span>🤖</span>
-        <span>🌳</span>
-        <span>📊</span>
-      </div>
-
-      {/* FULL SCREEN BOUNCING CODE (Moved outside the box!) */}
-      <div className="floating-code">
-        <div className="code-float">import seaborn as sns</div>
-        <div className="code-float">sns.load_dataset("JESWANTH")</div>
-        <div className="code-float">class TreeNode: pass</div>
-        <div className="code-float">public class Main {}</div>
-        <div className="code-float">int arr[] = {1,2,3};</div>
-        <div className="code-float">def logistic_regression(X): pass</div>
-      </div>
-
-      {/* The BOX still appears (you wanted to keep it) */}
+      {/* Center content */}
       <motion.div
-        className="code-box-clean"
-        initial={{ opacity: 0, y: 40 }}
+        className="splash-inner"
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* You can keep this empty or add glow effect */}
+        {/* Logo mark */}
+        <motion.div
+          className="splash-logo-wrap"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+        >
+          <div className="splash-logo-ring" />
+          <span className="splash-logo-initials">JA</span>
+        </motion.div>
+
+        <motion.h1
+          className="splash-name"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          Jeswanth A
+        </motion.h1>
+
+        <motion.p
+          className="splash-role"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+        >
+          Backend Engineer &amp; CS Student
+        </motion.p>
+
+        {/* Progress bar */}
+        <div className="splash-progress-track">
+          <motion.div
+            className="splash-progress-bar"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        {/* Terminal steps */}
+        <div className="splash-terminal">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={step}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="splash-prompt">&gt;</span> {STEPS[step]}
+              <span className="splash-cursor" />
+            </motion.span>
+          </AnimatePresence>
+        </div>
       </motion.div>
-
-      {/* TREE ANIMATION */}
-      <div className="tree-container">
-        <span className="tree-node" style={{ top: "0%", left: "50%" }}></span>
-        <span className="tree-node" style={{ top: "30%", left: "30%" }}></span>
-        <span className="tree-node" style={{ top: "30%", left: "70%" }}></span>
-        <span className="tree-node" style={{ top: "60%", left: "20%" }}></span>
-        <span className="tree-node" style={{ top: "60%", left: "40%" }}></span>
-        <span className="tree-node" style={{ top: "60%", left: "60%" }}></span>
-        <span className="tree-node" style={{ top: "60%", left: "80%" }}></span>
-
-        <div className="tree-edge root-left"></div>
-        <div className="tree-edge root-right"></div>
-        <div className="tree-edge left-branch"></div>
-        <div className="tree-edge right-branch"></div>
-        <div className="tree-edge mid-left"></div>
-        <div className="tree-edge mid-right"></div>
-      </div>
-
-      {/* TITLE */}
-      <motion.h1
-        className="splash-title"
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2 }}
-      >
-        Jeswanth A
-      </motion.h1>
-
-      {/* SUBTEXT */}
-      <motion.p
-        className="splash-sub"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.9 }}
-      >
-        Initializing Portfolio...
-      </motion.p>
     </motion.div>
   );
 }

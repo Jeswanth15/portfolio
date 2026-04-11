@@ -1,182 +1,161 @@
-/* MAIN CONTAINER ----------------------------------------------------- */
-.splash-container {
-  height: 100vh;
-  width: 100%;
-  background: #020617;
+/* ═══════════════════════════════════════════════════
+   SPLASH SCREEN — Premium Dark
+═══════════════════════════════════════════════════ */
+
+.splash-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #030303;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  position: relative;
   overflow: hidden;
 }
 
-/* ====================================================================
-   VERTICAL LINES
-==================================================================== */
-.vertical-lines span {
-  position: absolute;
-  top: -120%;
-  width: 2px;
-  height: 140%;
-  background: rgba(56,189,248,0.16);
-  animation: vMove 4s linear infinite;
-}
-
-.vertical-lines span:nth-child(1) { left: 12%; animation-delay: 0s; }
-.vertical-lines span:nth-child(2) { left: 30%; animation-delay: 0.4s; }
-.vertical-lines span:nth-child(3) { left: 50%; animation-delay: 0.8s; }
-.vertical-lines span:nth-child(4) { left: 70%; animation-delay: 1.2s; }
-.vertical-lines span:nth-child(5) { left: 88%; animation-delay: 1.6s; }
-
-@keyframes vMove {
-  0% { transform: translateY(-140%); }
-  100% { transform: translateY(140%); }
-}
-
-/* ====================================================================
-   HORIZONTAL LINES
-==================================================================== */
-.horizontal-lines span {
-  position: absolute;
-  left: -140%;
-  height: 2px;
-  width: 140%;
-  background: rgba(56,189,248,0.14);
-  animation: hMove 5s linear infinite;
-}
-
-.horizontal-lines span:nth-child(1) { top: 20%; animation-delay: 0s; }
-.horizontal-lines span:nth-child(2) { top: 38%; animation-delay: 0.5s; }
-.horizontal-lines span:nth-child(3) { top: 56%; animation-delay: 1s; }
-.horizontal-lines span:nth-child(4) { top: 74%; animation-delay: 1.5s; }
-.horizontal-lines span:nth-child(5) { top: 90%; animation-delay: 2s; }
-
-@keyframes hMove {
-  0% { transform: translateX(-140%); }
-  100% { transform: translateX(140%); }
-}
-
-/* ====================================================================
-   FLOATING ICONS
-==================================================================== */
-.floating-icons span {
-  position: absolute;
-  font-size: 1.8rem;
-  color: #38bdf8;
-  opacity: 0.15;
-  animation: float 6s infinite ease-in-out;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); opacity: 0.2; }
-  50% { transform: translateY(-22px); opacity: 0.45; }
-  100% { transform: translateY(0px); opacity: 0.2; }
-}
-
-/* ====================================================================
-   FLOATING CODE
-==================================================================== */
-.floating-code {
+/* ── Aurora glow ── */
+.splash-aurora {
   position: absolute;
   inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80%  80%, rgba(59, 130, 246, 0.12), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10%  70%, rgba(6, 182, 212, 0.08),  transparent 60%);
   pointer-events: none;
-  z-index: 5;
+  animation: auroraShift 6s ease-in-out infinite alternate;
 }
 
-.code-float {
+@keyframes auroraShift {
+  0%   { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.08) translateY(-10px); }
+}
+
+/* ── Dot grid ── */
+.splash-grid {
   position: absolute;
-  font-family: monospace;
-  font-size: 0.9rem;
-  color: #38bdf8;
-  opacity: 0.85;
-  white-space: nowrap;
-  animation: bounceXY 6s infinite alternate ease-in-out;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
 }
 
-@keyframes bounceXY {
-  0% { transform: translate(0,0); }
-  25% { transform: translate(260px,-160px); }
-  50% { transform: translate(-200px,180px); }
-  75% { transform: translate(280px,120px); }
-  100% { transform: translate(-240px,-150px); }
-}
-
-/* ====================================================================
-   TREE (Nodes + Lines)
-==================================================================== */
-.tree-container {
-  position: absolute;
-  width: 100%;
-  height: 55%;
-  bottom: 12%;
-}
-
-.tree-node {
-  position: absolute;
-  height: 18px;
-  width: 18px;
-  background: #38bdf8;
-  border-radius: 50%;
-  opacity: 0;
-  animation: popNode 0.6s forwards ease;
-}
-
-@keyframes popNode {
-  0% { transform: scale(0.4); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.tree-edge {
-  position: absolute;
-  width: 2px;
-  background: #38bdf8;
-  opacity: 0;
-  animation: growEdge 0.6s forwards ease;
-}
-
-@keyframes growEdge {
-  0% { height: 0; opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* ====================================================================
-   STATISTICAL GRAPH BARS
-==================================================================== */
-.stats-graph {
-  position: absolute;
-  bottom: 4%;
+/* ── Inner content ── */
+.splash-inner {
+  position: relative;
+  z-index: 10;
   display: flex;
-  gap: 12px;
-  height: 80px;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
-.stat-bar {
-  width: 10px;
-  background: #38bdf8;
-  border-radius: 4px;
-  box-shadow: 0 0 18px #38bdf8aa;
-  animation: barsRise 2s ease-in-out infinite alternate;
+/* ── Logo ring ── */
+.splash-logo-wrap {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-@keyframes barsRise {
-  0% { transform: scaleY(0.4); opacity: 0.5; }
-  100% { transform: scaleY(1); opacity: 1; }
+.splash-logo-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: conic-gradient(from 0deg, #8b5cf6, #3b82f6, #06b6d4, #8b5cf6) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: spinRing 3s linear infinite;
 }
 
-/* ====================================================================
-   SPLASH TITLE
-==================================================================== */
-.splash-title {
-  color: #e5e7eb;
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+.splash-logo-initials {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #ffffff, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Name ── */
+.splash-name {
+  font-family: "Inter", sans-serif;
   font-size: 2.4rem;
-  margin-top: 1rem;
-  text-shadow: 0 0 15px #38bdf855;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: #fff;
+  margin-bottom: 0.4rem;
 }
 
-.splash-sub {
-  color: #94a3b8;
-  margin-top: 0.5rem;
-  font-size: 1rem;
+/* ── Role subtitle ── */
+.splash-role {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555565;
+  letter-spacing: 0.04em;
+  margin-bottom: 2.2rem;
+}
+
+/* ── Progress track ── */
+.splash-progress-track {
+  width: 220px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+}
+
+.splash-progress-bar {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6, #06b6d4);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+  transition: width 0.1s linear;
+}
+
+/* ── Terminal text ── */
+.splash-terminal {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.82rem;
+  color: #444455;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 24px;
+}
+
+.splash-prompt {
+  color: #8b5cf6;
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+
+.splash-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: #8b5cf6;
+  border-radius: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: cursorBlink 1.1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
