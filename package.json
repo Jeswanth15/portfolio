@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Jeswanth15.github.io/portfolio",
+  "homepage": "https://jeswanth15.github.io/portfolio",
   "name": "my-react-app",
   "version": "0.1.0",
   "private": true,
@@ -22,7 +22,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": [

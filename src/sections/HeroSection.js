@@ -11,7 +11,7 @@ export default function HeroSection() {
         <motion.div variants={fadeUp}>
           <div className="hero-eyebrow">
             <div className="hero-eyebrow-dot" />
-            Data Intelligence Architect · Open to Opportunities
+            Data Insight Alchemist · Open to Opportunities
           </div>
         </motion.div>
 
@@ -19,19 +19,19 @@ export default function HeroSection() {
           Hi, I'm{" "}
           <span className="name-grad">Jeswanth</span>.
           <br />
-          I build scalable
+          I turn data into
           <br />
-          software systems.
+          intelligence.
         </motion.h1>
 
         <motion.p className="hero-sub" variants={fadeUp} style={{ marginTop: "1.5rem" }}>
-          Computer Science student focused on backend development, system design, and building
-          data-driven applications across recommendation systems and education platforms.
+          CS student specialising in data analysis, machine learning, and building
+          insight-driven systems — turning raw datasets into real decisions and impact.
         </motion.p>
 
         <motion.div className="hero-cta" variants={fadeUp}>
           <a href="#projects" className="btn-primary">
-            <i className="ri-code-box-line" />
+            <i className="ri-bar-chart-box-line" />
             View Projects
           </a>
           <a href="#contact" className="btn-ghost">
@@ -56,6 +56,7 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
+      {/* Code panel */}
       <motion.div
         initial={{ opacity: 0, y: 60, scale: 0.92 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -66,20 +67,19 @@ export default function HeroSection() {
             <span className="code-dot red" />
             <span className="code-dot yellow" />
             <span className="code-dot green" />
-            <span className="code-filename">backend_node.py</span>
+            <span className="code-filename">insight_engine.py</span>
           </div>
           <div className="code-body">
-            <span className="sc"># core system bootstrap</span><br />
-            <span className="sk">from</span> core_engine <span className="sk">import</span> <span className="sb">System</span><br /><br />
-            <span className="sv">backend_node</span> = <span className="sb">System</span>(<br />
-            &nbsp;&nbsp;framework=<span className="ss">"Spring Boot"</span>,<br />
-            &nbsp;&nbsp;architecture=<span className="ss">"Microservices"</span>,<br />
+            <span className="sc"># transform data → intelligence</span><br />
+            <span className="sk">from</span> analytics <span className="sk">import</span> <span className="sb">Insight</span><br /><br />
+            <span className="sv">pipeline</span> = <span className="sb">Insight</span>(<br />
+            &nbsp;&nbsp;role=<span className="ss">"Data Analyst"</span>,<br />
+            &nbsp;&nbsp;stack=[<span className="ss">"Python"</span>, <span className="ss">"Pandas"</span>, <span className="ss">"ML"</span>],<br />
             &nbsp;&nbsp;consistency=<span className="sn">True</span>,<br />
-            &nbsp;&nbsp;auth=<span className="ss">"OAuth2"</span>,<br />
-            &nbsp;&nbsp;scale=<span className="sn">∞</span><br />
+            &nbsp;&nbsp;impact=<span className="sn">∞</span><br />
             )<br /><br />
             <span className="sc"># ignite 🚀</span><br />
-            <span className="sv">backend_node</span>.<span className="sf">ignite</span>()
+            <span className="sv">pipeline</span>.<span className="sf">run</span>()
           </div>
         </div>
       </motion.div>
